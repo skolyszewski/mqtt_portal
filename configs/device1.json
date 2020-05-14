@@ -1,5 +1,5 @@
 {
-    "room_name": "bedroom",
-    "device_name": "lamp1",
+    "publish_topic": "room/lamp1/state",
+    "subscribe_topic": "room/lamp1/state",
     "broker_address": "broker"
 }
