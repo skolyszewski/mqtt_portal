@@ -4,12 +4,26 @@ services:
     image: eclipse-mosquitto
     volumes:
       - ./configs/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    ports:
+      - 9001:9001
 
   device1:
     build:
       context: .
       dockerfile: device.Dockerfile
     volumes:
-      - ./configs/device1.json:/etc/mqtt-device/config.json
-    network_mode: service:broker
+      - ./configs/device1.json:/etc/mqtt-device/config.json:ro
+      - ./mqtt-device/:/mqtt-device/app:ro
+    depends_on:
+      - broker
 
+#   portal:
+#     build:
+#       context: .
+#       dockerfile: portal.Dockerfile
+#     ports: 
+#       - 8080:8080
+# # this is a volume for development purposes
+#     # volumes:
+#     #   - ./portal/:/app:ro
+#     # command: npm run serve

@@ -75,4 +75,4 @@ if __name__ == "__main__":
     while True:
         # random_state()
         client.publish(config.publish_topic, STATE.encode())
-        sleep(0.5)
+        sleep(2)
