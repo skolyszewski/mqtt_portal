@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="smart home" src="./assets/homelamp.png" width=100>
     <device></device>
   </div>
 </template>

@@ -13,17 +13,13 @@ services:
       dockerfile: device.Dockerfile
     volumes:
       - ./configs/device1.json:/etc/mqtt-device/config.json:ro
-      - ./mqtt-device/:/mqtt-device/app:ro
+      # - ./mqtt-device/:/mqtt-device/app:ro
     depends_on:
       - broker
 
-#   portal:
-#     build:
-#       context: .
-#       dockerfile: portal.Dockerfile
-#     ports: 
-#       - 8080:8080
-# # this is a volume for development purposes
-#     # volumes:
-#     #   - ./portal/:/app:ro
-#     # command: npm run serve
+  portal:
+    build:
+      context: .
+      dockerfile: portal.Dockerfile
+    ports: 
+      - 8080:8080

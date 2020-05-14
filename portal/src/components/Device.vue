@@ -1,7 +1,8 @@
 <template>
   <div class="device">
-        <p v-html="status">Status:</p>
-        <button @click=changeState>on/off</button>
+        <p>Status:</p>
+        <p v-html="status"></p>
+        <button v-on:click=changeState>on/off</button>
   </div>
 </template>
 
@@ -9,14 +10,27 @@
 export default {
   data () {
     return {
-      status: 'State:' + this.state
+      status: "off"
     }
   },
   mqtt: {
     /** on messages on that topic, update the state */
     'home/room/lamp1/state' (data) {
       this.status = data.toString()
-      console.log(this.state)
+      console.log('received:' + this.status)
+    }
+  },
+  methods: {
+    changeState: function() {
+      var nextStatus
+      if (this.status == 'on') {
+        nextStatus = 'off'
+      }
+      else if (this.status == 'off') {
+        nextStatus = 'on'
+      }
+      this.$mqtt.publish('home/room/lamp1/state', nextStatus)
+      console.log('sent:' + nextStatus)
     }
   }
 }
