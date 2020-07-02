@@ -10,7 +10,7 @@ services:
   lamp1:
     build:
       context: .
-      dockerfile: device.Dockerfile
+      dockerfile: dockerfiles/device.Dockerfile
     volumes:
       - ./configs/device1.json:/etc/mqtt-device/config.json:ro
       # - ./mqtt-device/:/mqtt-device/app:ro
@@ -20,7 +20,7 @@ services:
   ac1:
     build:
       context: .
-      dockerfile: device.Dockerfile
+      dockerfile: dockerfiles/device.Dockerfile
     volumes:
       - ./configs/device2.json:/etc/mqtt-device/config.json:ro
       # - ./mqtt-device/:/mqtt-device/app:ro
@@ -30,7 +30,7 @@ services:
   fan1:
     build:
       context: .
-      dockerfile: device.Dockerfile
+      dockerfile: dockerfiles/device.Dockerfile
     volumes:
       - ./configs/device3.json:/etc/mqtt-device/config.json:ro
       # - ./mqtt-device/:/mqtt-device/app:ro
@@ -40,7 +40,7 @@ services:
   lamp2ct:
     build:
       context: .
-      dockerfile: device.Dockerfile
+      dockerfile: dockerfiles/device.Dockerfile
     volumes:
       - ./configs/device4.json:/etc/mqtt-device/config.json:ro
       # - ./mqtt-device/:/mqtt-device/app:ro
@@ -50,6 +50,6 @@ services:
   portal:
     build:
       context: .
-      dockerfile: portal.Dockerfile
+      dockerfile: dockerfiles/portal.Dockerfile
     ports:
       - 8080:8080
