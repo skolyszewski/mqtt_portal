@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <img alt="smart home" src="./assets/homelamp.png" width=100>
-    <device></device>
+    <h3>Your devices</h3>
+    <device
+      v-for="device in devices"
+      v-bind:key="device.name"
+      v-bind:name="device.name"
+      v-bind:topic="device.topic"
+    />
   </div>
 </template>
 
@@ -12,11 +17,30 @@ export default {
   components: {
     Device
   },
+  data: function() {
+    return {
+      devices: this.devices,
+    }
+  },
   created () {
+    this.devices = []
+    this.names = []
     this.$mqtt.subscribe('home/#')
     console.log("subscribed!")
+  },
+  mqtt: {
+    'home/#' (data, topic) {
+      let name = topic.split('/')[1]
+      let device = {'name': name, 'topic': topic}
+      console.log("received: " + data + " on topic " +  topic)
+      if (!this.names.includes(name)) {
+        this.names.push(name)
+        this.devices.push(device)
+      }
+    }
   }
 }
+
 </script>
 
 <style>

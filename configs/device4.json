@@ -1,0 +1,5 @@
+{
+    "name": "lamp2ct",
+    "broker_address": "broker",
+    "extra_param": "color_temp"
+}

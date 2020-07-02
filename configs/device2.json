@@ -1,0 +1,5 @@
+{
+    "name": "AC1",
+    "broker_address": "broker",
+    "extra_param": "temp"
+}
