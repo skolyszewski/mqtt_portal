@@ -47,9 +47,9 @@ services:
     depends_on:
       - broker
 
-  # portal:
-  #   build:
-  #     context: .
-  #     dockerfile: portal.Dockerfile
-  #   ports: 
-  #     - 8080:8080
+  portal:
+    build:
+      context: .
+      dockerfile: portal.Dockerfile
+    ports:
+      - 8080:8080
