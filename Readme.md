@@ -3,6 +3,13 @@
 A Vue-based portal for managing home devices running on MQTT. Device autodiscovery out of the box!
 The PoC uses mosquitto broker and containerized IoT devices, written in python.
 
+---
+**NOTE**
+
+This is just a small academic project.
+
+---
+
 # Support
 
 The portal supports following device types:
